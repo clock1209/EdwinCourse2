@@ -12,6 +12,13 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/fixedcolumns/3.2.4/css/fixedColumns.bootstrap.min.css" rel="stylesheet">
+    {{--<link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css"> --}}{{--normal-dt--}}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.12.4/sweetalert2.min.css">
+    @stack('styles')
 </head>
 <body>
     <div id="app">
@@ -37,7 +44,7 @@
                     <!-- Left Side Of Navbar -->
                     @auth
                         <ul class="nav navbar-nav">
-                            <li><a href="#">Users</a></li>
+                            <li><a href="{{ route('users.index') }}">Users</a></li>
                             <li><a href="#">Posts</a></li>
                         </ul>
                     @endauth
@@ -78,5 +85,34 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <!-- DataTables -->
+    {{--<script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>--}}
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/fixedcolumns/3.2.4/js/dataTables.fixedColumns.min.js"></script>
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.12.4/sweetalert2.all.min.js"></script>
+    <script>
+        @if (Session::has('msg'))
+            sAlert(
+                "{{ Session::get('msg.title') }}",
+                "{{ Session::get('msg.text') }}",
+                "{{ Session::get('msg.type') }}"
+            );
+        @endif
+
+        function sAlert(title, text, type = 'success', timer = 3000){
+            swal({
+                title: title,
+                text: text,
+                type: type,
+                timer: timer,
+            });
+        }
+    </script>
+    @stack('scripts')
 </body>
 </html>
