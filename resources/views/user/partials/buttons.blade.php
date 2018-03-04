@@ -1,4 +1,4 @@
-<a class="btn btn-primary btn-xs" title="Editar">
+<a href="{{ route('users.edit', $user->id) }}" class="btn btn-primary btn-xs" title="Editar">
     <i class="far fa-edit fa-lg"></i>
 </a>
 <a class="btn btn-info btn-xs" title="Detalles">

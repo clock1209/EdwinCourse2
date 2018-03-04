@@ -50,6 +50,7 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
+        $request->flash();
         User::create($request->all());
 
         return redirect('users')->with(['msg' => swal::success('Guardado!', 'Se guardó exitosamente.')]);
@@ -72,9 +73,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        return view('user.edit', compact('user'));
     }
 
     /**
@@ -84,9 +85,16 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserRequest $request, User $user)
     {
-        //
+        $request->flash();
+        if (!$request->password) {
+            $user->update($request->except(['password']));
+        } else {
+            $user->update($request->all());
+        }
+
+        return redirect()->route('users.index');
     }
 
     /**

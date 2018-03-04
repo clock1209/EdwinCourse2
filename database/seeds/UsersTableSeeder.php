@@ -20,7 +20,7 @@ class UsersTableSeeder extends Seeder
         factory(User::class)->create([
             'name' => 'admin',
             'email' => 'admin@admin.com',
-            'password' => bcrypt('secret'),
+            'password' => 'secret',
         ]);
 
         factory(User::class, 10)->create();

@@ -18,6 +18,14 @@
     <link href="https://cdn.datatables.net/fixedcolumns/3.2.4/css/fixedColumns.bootstrap.min.css" rel="stylesheet">
     {{--<link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css"> --}}{{--normal-dt--}}
     <link href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.12.4/sweetalert2.min.css">
+    <style>
+        .center {
+            text-align: center;
+        }
+        .help-block {
+            margin: 0px;
+        }
+    </style>
     @stack('styles')
 </head>
 <body>

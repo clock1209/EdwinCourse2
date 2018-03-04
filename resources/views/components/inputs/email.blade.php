@@ -7,6 +7,6 @@
     </label>
     <div class="col-sm-8">
         {!! Form::email($name, $object ? $object->$name : null, array_merge(['class' => 'form-control'], $attributes)) !!}
+        <span class="help-block">{{ $errors->first($name) }}</span>
     </div>
-    <span class="help-block">{{ $errors->first($name) }}</span>
 </div>
